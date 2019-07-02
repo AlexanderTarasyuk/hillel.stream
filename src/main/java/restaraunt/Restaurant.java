@@ -5,6 +5,7 @@ import lombok.Data;
 import model.Dish;
 import model.DishType;
 import oldSchoolUseCase.OldSchoolUseCase;
+import rxJavaUseCase.RxJavaUseCase;
 import streamApiUseCase.StreamApiUseCase;
 
 import java.util.ArrayList;
@@ -27,9 +28,12 @@ public class Restaurant {
     public static void main(String[] args) {
         UseCaseContract<List<Dish>> oldSchoolUseCaseAllInOne = OldSchoolUseCase.getInstance();
         UseCaseContract<List<Dish>> streamApiUseCase = StreamApiUseCase.getInstance();
+        UseCaseContract<List<Dish>> reactiveUseCase= RxJavaUseCase.getInstance();
 
         oldSchoolUseCaseAllInOne.justDoIt(menu);
         streamApiUseCase.justDoIt(menu);
+        reactiveUseCase.justDoIt(menu);
+
 
 
     }
