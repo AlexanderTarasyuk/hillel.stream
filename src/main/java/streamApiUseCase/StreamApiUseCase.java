@@ -1,5 +1,6 @@
 package streamApiUseCase;
 
+import jdk.internal.org.jline.utils.Log;
 import model.Dish;
 import model.DishType;
 import contract.UseCaseContract;
@@ -17,12 +18,13 @@ public class StreamApiUseCase implements UseCaseContract<List<Dish>> {
 
     public static StreamApiUseCase getInstance() {
         if (streamApiUseCase == null) {
-            synchronized (OldSchoolUseCase.class) {
+            synchronized (StreamApiUseCase.class) {
                 if (streamApiUseCase == null) {
                     streamApiUseCase = new StreamApiUseCase();
                 }
             }
         }
+        Log.error("");
         return streamApiUseCase;
     }
 
