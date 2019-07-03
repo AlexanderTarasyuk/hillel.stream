@@ -40,8 +40,7 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
     @Override
     public void printNameDish(List<Dish> menu) {
         if (menu != null && !menu.isEmpty()) {
-            for (Dish dish : menu
-            ) {
+            for (Dish dish : menu) {
                 System.out.println(dish.getName());
 
             }
@@ -52,12 +51,10 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
     public void printNameDishLowCallories(List<Dish> menu) {
         if (menu != null && !menu.isEmpty()) {
 
-            for (Dish dish : menu
-            ) {
+            for (Dish dish : menu) {
                 if (dish.getCalories() < 150) {
                     System.out.println(dish.getName());
                 }
-
             }
         }
     }
@@ -71,21 +68,13 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
                         @Override
                         public int compare(Dish o1, Dish o2) {
                             return o1.getCalories().compareTo(o2.getCalories());
-
                         }
                     }
             );
-
-            int temp = 0;
-            while (temp <= 3) {
-                for (Dish dish :
-                        menu) {
-                    System.out.println(dish.toString());
-                    temp++;
-                }
+            Collections.reverse(menu);
+            for (int i = 0; i < menu.size() && i < 3; i++) {
+                System.out.println(menu.get(i).toString());
             }
-
-
         }
 
     }
@@ -99,16 +88,12 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
                 @Override
                 public int compare(Dish o1, Dish o2) {
                     return o1.getType().compareTo(o2.getType());
-
                 }
-
             });
         }
 
-        for (Dish dish : menu
-        ) {
+        for (Dish dish : menu) {
             System.out.println(dish.toString());
-
         }
     }
 
@@ -121,16 +106,12 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
                 @Override
                 public int compare(Dish o1, Dish o2) {
                     return o1.getName().compareTo(o2.getName());
-
                 }
-
             });
         }
 
-        for (Dish dish : menu
-        ) {
+        for (Dish dish : menu) {
             System.out.println(dish.toString());
-
         }
     }
 
@@ -145,8 +126,7 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
         int numberOfVegetables = 0;
 
         if (menu != null && !menu.isEmpty()) {
-            for (Dish dish : menu
-            ) {
+            for (Dish dish : menu) {
                 switch (dish.getType()) {
 
                     case BEEF:
@@ -183,8 +163,7 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
 
 
         if (menu != null && !menu.isEmpty()) {
-            for (Dish dish : menu
-            ) {
+            for (Dish dish : menu) {
                 switch (dish.getType()) {
 
                     case BEEF:
@@ -219,8 +198,7 @@ public final class OldSchoolUseCase implements UseCaseContract<List<Dish>> {
 
 
         if (menu != null && !menu.isEmpty()) {
-            for (Dish dish : menu
-            ) {
+            for (Dish dish : menu) {
                 switch (dish.getType()) {
 
                     case BEEF:

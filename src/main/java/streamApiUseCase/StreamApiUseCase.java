@@ -1,10 +1,9 @@
 package streamApiUseCase;
 
+import contract.UseCaseContract;
 import jdk.internal.org.jline.utils.Log;
 import model.Dish;
 import model.DishType;
-import contract.UseCaseContract;
-import oldSchoolUseCase.OldSchoolUseCase;
 
 import java.util.List;
 import java.util.Map;
@@ -45,14 +44,17 @@ public class StreamApiUseCase implements UseCaseContract<List<Dish>> {
     @Override
     public void printNameDish(List<Dish> menu) {
         menu.stream()
-                .forEach(dish -> System.out.println(dish.getName()));
+                .map(Dish::getName)
+                .forEach(System.out::println);
 
     }
 
     @Override
     public void printNameDishLowCallories(List<Dish> menu) {
-        menu.stream().filter(dish -> dish.getCalories() < 150)
-                .forEach(dish -> System.out.println(dish.getName()));
+        menu.stream()
+                .filter(dish -> dish.getCalories() < 150)
+                .map(Dish::getName)
+                .forEach(System.out::println);
     }
 
     @Override
@@ -61,19 +63,18 @@ public class StreamApiUseCase implements UseCaseContract<List<Dish>> {
 
 
         menu.stream()
-                .sorted((dish1, dish2) -> dish1.getCalories().compareTo(dish2.getCalories()))
+                .sorted((dish1, dish2) -> dish2.getCalories().compareTo(dish1.getCalories()))
                 .limit(3)
-                .forEach(dish -> System.out.println(dish.toString()));
-
-
+                .map(Dish::getName)
+                .forEach(System.out::println);
     }
 
     @Override
     public void printByType(List<Dish> menu) {
         menu.stream()
                 .sorted((dish1, dish2) -> dish1.getType().compareTo(dish2.getType()))
-                .forEach(dish -> System.out.println(dish.toString()));
-
+                .map(Dish::getName)
+                .forEach(System.out::println);
     }
 
     @Override
@@ -81,9 +82,8 @@ public class StreamApiUseCase implements UseCaseContract<List<Dish>> {
 
         menu.stream()
                 .sorted((dish1, dish2) -> dish1.getName().compareTo(dish2.getName()))
-                .forEach(dish -> System.out.println(dish.toString()));
-
-
+                .map(Dish::getName)
+                .forEach(System.out::println);
     }
 
     @Override
@@ -92,8 +92,6 @@ public class StreamApiUseCase implements UseCaseContract<List<Dish>> {
         return menu.stream()
                 .collect(Collectors.groupingBy(Dish::getType,
                         Collectors.averagingDouble(Dish::getCalories)));
-
-
     }
 
     @Override

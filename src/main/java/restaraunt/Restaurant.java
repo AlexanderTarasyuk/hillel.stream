@@ -26,11 +26,11 @@ public class Restaurant {
     };
 
     public static void main(String[] args) {
-        UseCaseContract<List<Dish>> oldSchoolUseCaseAllInOne = OldSchoolUseCase.getInstance();
-        UseCaseContract<List<Dish>> streamApiUseCase = StreamApiUseCase.getInstance();
-        UseCaseContract<List<Dish>> reactiveUseCase= RxJavaUseCase.getInstance();
+        var oldSchoolUseCase= OldSchoolUseCase.getInstance();
+        var streamApiUseCase = StreamApiUseCase.getInstance();
+        var reactiveUseCase= RxJavaUseCase.getInstance();
 
-        oldSchoolUseCaseAllInOne.justDoIt(menu);
+        oldSchoolUseCase.justDoIt(menu);
         streamApiUseCase.justDoIt(menu);
         reactiveUseCase.justDoIt(menu);
 

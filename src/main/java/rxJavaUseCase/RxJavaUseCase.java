@@ -70,7 +70,7 @@ public class RxJavaUseCase implements UseCaseContract<List<Dish>> {
                 .filter(dish -> dish.getCalories() < 150)
                 .subscribe(dish -> {
                     System.out.println(dish.getName());
-                }, throwable -> System.out.println(throwable.getStackTrace()));
+                }, Throwable::printStackTrace);
 
 
     }
@@ -82,7 +82,7 @@ public class RxJavaUseCase implements UseCaseContract<List<Dish>> {
 
         observable
                 .subscribeOn(Schedulers.computation())
-                .sorted((dish1, dish2) -> dish1.getCalories().compareTo(dish2.getCalories()))
+                .sorted((dish1, dish2) -> dish2.getCalories().compareTo(dish1.getCalories()))
                 .take(3)
                 .subscribe(dish -> {
                     System.out.println(dish.getName());
